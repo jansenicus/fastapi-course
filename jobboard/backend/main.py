@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from jobboard.backend.core.config import settings
 from jobboard.backend.db.session import engine
-from jobboard.backend.db.base_class import Base
+from jobboard.backend.db.base import Base
 
 
 def create_tables():
