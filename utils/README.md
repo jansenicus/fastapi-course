@@ -1,5 +1,6 @@
 Known Current Limitation on Mac:
-cannot connect to exposed port on Mac, use original (inner) port instead.
+https://docs.docker.com/desktop/mac/networking/
+
 
 For example:
 ```yaml
@@ -8,7 +9,12 @@ For example:
     expose:
       - "80"
 ```
+
+In this case:
+On Linux, open browser to the exposed port http://localhost:80/
+Will fail when trying to connect with Mac to http://localhost:80/
+
+Workaround:
 On Mac, open browser to the original http://localhost:5050/ 
 instead of the intended exposed port http://localhost:80/
 
-On Linux, open browser to the exposed port http://localhost:80/
