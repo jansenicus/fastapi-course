@@ -2,6 +2,11 @@ fastapi
 uvicorn
 
 #for databases
+#
+# psycopg2: 
+# sudo apt install python3-dev libpq-dev
+# 
+
 sqlalchemy
 psycopg2
 
