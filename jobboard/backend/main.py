@@ -2,12 +2,15 @@ from fastapi import FastAPI
 from jobboard.backend.core.config import settings
 from jobboard.backend.db.session import engine
 from jobboard.backend.db.base import Base
-from jobboard.backend.apis.v1.route_users import router
+from jobboard.backend.apis.base import api_router
 
 def init_tables():
 
     Base.metadata.create_all(bind=engine)
 
+
+def include_router(app):
+    pass
 
 def start_application():
 
@@ -16,7 +19,7 @@ def start_application():
 
     init_tables()
 
-    app.include_router(router)
+    app.include_router(api_router)
 
 
     return app
