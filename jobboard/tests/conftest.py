@@ -53,7 +53,8 @@ def db_session(app: FastAPI) -> Generator[SessionTesting, Any, None]:
 
 @pytest.fixture(scope="function")
 def client(
-    app: FastAPI, db_session: SessionTesting
+    app: FastAPI, 
+    db_session: SessionTesting
 ) -> Generator[TestClient, Any, None]:
     """
     create a new FastAPI TestClient that uses the `db_session` fixture to override the `get_db` dependency 
@@ -65,6 +66,6 @@ def client(
         finally:
             pass
 
-    app.dependency_overrides[get_db] = _get_test_db()
+    app.dependency_overrides[get_db] = _get_test_db
     with TestClient(app) as client:
         yield client
