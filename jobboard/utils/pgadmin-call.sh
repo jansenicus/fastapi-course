@@ -2,24 +2,26 @@
 cd ..
 clear
 echo ------------------------------------------
-echo PGAdmin Call
+echo PGAdmin Browser Call
 echo ------------------------------------------
-IPAddress=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' pgadmin4_container)
-echo try opening http://$IPAddress/, press ENTER to return
-# Detect the platform (similar to $OSTYPE)
+INSTANCE=pgadmin4_container
+IPADDRESS=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $INSTANCE)
+PORT=$(docker inspect $INSTANCE | jq -r '.[].NetworkSettings.Ports."80/tcp"[].HostPort')
+echo try opening http://$IPADDRESS:$PORT/
 OS="`uname`"
 case $OS in
   'Linux')
     OS='Linux'
-    xdg-open http://$IPAddress/
+    xdg-open http://$IPADDRESS:$PORT/
+    exit
     ;;
   'WindowsNT')
     OS='Windows'
-    start http://$IPAddress/
+    start http://$IPADDRESS:$PORT/
     ;;
   'Darwin') 
     OS='Mac'
-    open http://$IPAddress/
+    open http://localhost:$PORT/
     ;;
 esac
-return
+exit
