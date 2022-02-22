@@ -1,4 +1,5 @@
 Pipfile
 Pipfile.lock
 .env
+env
 sql_app.db

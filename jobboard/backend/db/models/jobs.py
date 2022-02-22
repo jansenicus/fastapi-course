@@ -6,7 +6,8 @@ from sqlalchemy import (Column,
                         Date,
                         ForeignKey)
 from sqlalchemy.orm import relationship
-from jobboard.backend.db.base_class import Base
+
+from backend.db.base_class import Base
 
 
 class Job(Base):

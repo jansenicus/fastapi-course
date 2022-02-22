@@ -1,8 +1,9 @@
 from fastapi import FastAPI
-from jobboard.backend.core.config import settings
-from jobboard.backend.db.session import engine
-from jobboard.backend.db.base import Base
-from jobboard.backend.apis.base import api_router
+
+from backend.core.config import settings
+from backend.db.session import engine
+from backend.db.base import Base
+from backend.apis.base import api_router
 
 def init_tables():
 

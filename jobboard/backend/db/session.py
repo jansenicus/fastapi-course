@@ -2,7 +2,7 @@ from typing import Generator
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from jobboard.backend.core.config import settings
+from backend.core.config import settings
 
 SQL_ALCHEMY_DATABASE_URL = settings.DATABASE_URL
 engine = create_engine(SQL_ALCHEMY_DATABASE_URL)
@@ -19,6 +19,7 @@ SessionLocal = sessionmaker(autocommit=False,
 def get_db() -> Generator:
     """
     returns a generator
+    for local session 
     """
     try:
         db = SessionLocal()

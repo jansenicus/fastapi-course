@@ -3,7 +3,8 @@ from sqlalchemy import (Column,
                         String,
                         Boolean)
 from sqlalchemy.orm import relationship
-from jobboard.backend.db.base_class import Base
+
+from backend.db.base_class import Base
 
 
 class User(Base):
