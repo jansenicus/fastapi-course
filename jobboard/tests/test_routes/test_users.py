@@ -11,5 +11,7 @@ def test_create_user(client):
     response = client.post("/users/",
                            json.dumps(data))
 
-    assert response.status_code == 200, "something is not right"
+    assert response.status_code == 200
+    assert response.json()["email"] == data.get("email")
+    assert response.json()["is_active"] == True
     
