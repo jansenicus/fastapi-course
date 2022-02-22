@@ -3,3 +3,4 @@ Pipfile.lock
 .env
 env
 sql_app.db
+test.db
