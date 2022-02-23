@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from backend.db.session import get_db
 from backend.db.models import jobs
 from backend.schemas.jobs import JobCreate, ShowJob
-from backend.db.repository.jobs import create_new_job, retrieve_job
+from backend.db.repository.jobs import create_new_job, retrieve_job, list_jobs
 from backend.schemas.jobs import ShowJob
 
 router = APIRouter()
@@ -25,3 +25,10 @@ def retrieve_job_by_id(id: int, db:Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
         detail=f"Job with id: {id} does not exist")
     return job
+
+@router.get("/all")
+def retrieve_all_jobs(db: Session = Depends(get_db)):
+    jobs = list_jobs(db=db)
+    return jobs
+
+     
