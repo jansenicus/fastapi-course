@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from backend.db.session import get_db
 from backend.db.models import jobs
 from backend.schemas.jobs import JobCreate, ShowJob
-from backend.db.repository.jobs import (create_new_job, retrieve_job, list_jobs)
+from backend.db.repository.jobs import (create_new_job, retrieve_job, list_jobs, update_job_by_id)
 
 router = APIRouter()
 
